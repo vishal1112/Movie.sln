@@ -12,7 +12,7 @@ namespace Movie.web.Models
         /// future can be converted to enum, as identifying all type of rating type
         /// </summary>
         public string Rated { get; set; }
-        public DateTime ReleasedDate { get; set; }
+        public string Released { get; set; }
         public string RunTime { get; set; }
         public MovieGenre Genre { get; set; }
         public string Director { get; set; }
