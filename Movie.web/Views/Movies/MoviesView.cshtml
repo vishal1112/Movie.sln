@@ -1,0 +1,90 @@
+﻿@using Movie.web.Models
+@model IEnumerable<Movie.web.Models.MovieModel>
+
+@if (Model != null)
+{
+    foreach (MovieModel Movie in Model)
+    {
+        if (Movie != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- content -->
+                    <div id="content">
+                        <div class="app-content-body ">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading font-bold" style="height:40px;">
+                                        <span class="pull-left">@Movie.Title</span>
+                                        <span class="pull-right text">
+                                            <i class="fa fa-thumbs-up text-success"></i> @Movie.Votes Votes
+                                        </span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="col-md-2" style="padding-left:0px;">
+                                            <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
+                                                <li class="list-group-item clearfix b-l-3x b-l-info">
+                                                    <img alt="Force 2" width="162" height="180"
+                                                         srcset='@Html.Raw(Movie.Poster)'
+                                                         aria-hidden="false">
+                                                </li>
+                                            </ul>
+                                            <div class="pull-left"><span class="label bg-light m-l-sm ">@Movie.RunTime</span></div>
+
+                                            <div class="pull-right" style="padding-right:10px;">
+                                                <span class="text">
+                                                    <i class="fa fa-fw m-r-xs text-info fa-star m-l"></i> @Movie.Rating
+                                                </span>
+                                            </div>
+                                            @**@
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div>
+                                                <button class="pull-left btn btn-sm m-b-xs w-xs btn-primary">@Movie.Country</button>
+                                                <button class="pull-left btn btn-sm m-b-xs w-xs btn-info" style="margin-left:10px;">@Movie.Language</button>
+                                                <button class="pull-left btn btn-sm m-b-xs w-xs btn-default" style="margin-left:10px;">@Movie.Year</button>
+                                                <div class="pull-right pull-right text-sm text-muted"><span class="hidden-xs ">@Movie.ReleasedDate</span></div>
+                                            </div>
+                                            <div class="line line-lg pull-in"></div>
+                                            <div>
+                                                <span>Story Line:</span> @Movie.Plot
+                                            </div>
+                                            <div>
+                                                <span>Awards:</span> @Movie.Awards
+                                            </div>
+                                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                                            <div style="margin-bottom:5px;">
+                                                <i class="fa icon-user text-success"></i><span style="margin-left:5px">Star Cast:</span> @Movie.Actors
+                                            </div>
+                                            <div style="margin-bottom:5px;">
+                                                <span class="text">
+                                                    <i class="fa icon-volume-1 text-success"></i><span style="margin-left:5px">
+                                                        Director:
+                                                    </span>@Movie.Director
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span class="text">
+                                                    <i class="fa icon-pencil text-success"></i><span style="margin-left:5px">
+                                                        Writer:
+                                                    </span>@Movie.Writer
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer" style="height:50px;">
+                                        <div class="pull-left"><button class="btn btn-default btn-sm btn-addon"><i class="fa fa-dollar"></i>@Movie.Price</button></div>
+                                        <button style="margin-left:10px" class="pull-right btn btn-sm m-b-xs w-xs btn-success">@Movie.Rated</button>
+                                        <button class="pull-right text-center btn btn-rounded btn-sm btn btn-default">@Movie.Metascore</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+}

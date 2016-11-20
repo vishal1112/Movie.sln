@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Web JET Movies</h1>
+    <p class="lead">Collection Of Movie Library. Best and Cheapest Movies all around the world</p>
+    <p>
+        <a href="@Url.Action("Search", "Movies")" class="btn btn-primary btn-lg">
+            <i class="icon-magnifier i-sm m-r-sm"></i>
+            <span class="padding-left-10">Search Movies</span>
+        </a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Assumption</h2>
+        <p>
+            Assuming Movie Releasesd not every day so cache the movie list
+        </p>
+        <p></p>
+    </div>
+</div>
