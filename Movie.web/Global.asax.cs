@@ -17,6 +17,7 @@ namespace Movie.web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //added Global Exception
             AttributeConfig.RegisterAttributes(GlobalFilters.Filters);
         }
     }
