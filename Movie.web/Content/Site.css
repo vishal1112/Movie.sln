@@ -312,3 +312,24 @@ ol, ul {
     border-left: 4px solid transparent;
     content: "";
 }
+
+.app-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1005;
+}
+
+.b-t {
+    border-top: 1px solid #dee5e7;
+}
+
+.wrapper {
+    padding: 15px;
+}
+
+.bg-light {
+    color: #58666e;
+    background-color: #edf1f2;
+}

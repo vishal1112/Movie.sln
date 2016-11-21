@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Movie.web.App_Start;
 
 namespace Movie.web
 {
@@ -16,6 +17,7 @@ namespace Movie.web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AttributeConfig.RegisterAttributes(GlobalFilters.Filters);
         }
     }
 }

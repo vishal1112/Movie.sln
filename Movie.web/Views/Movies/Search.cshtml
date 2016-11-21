@@ -56,9 +56,24 @@
 <div id="moviesSection">
     @{Html.RenderPartial("MoviesView", Model == null ? new List<MovieModel>() : Model); }
 </div>
-<div id="progressbar">
-    <div class="progress-label loading" style="text-align:center;padding-top:150px;">
-        <img src="~/Content/images/loading.gif" width="150" height="150" />
+
+<div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Getting Movies...</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-12">
+                        <img src="~/Content/images/loader.gif" width="150" height="150" />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -174,222 +189,22 @@
 
     loadMovies = function (order, field) {
         var _url = '@Url.Action("SearchMovie", "Movies")' + '/' + order + '/' + field;
-        var progressbar = $("#progressbar")
+        var $memberModel = $("#memberModal");
         $.ajax({
             url: _url,
             beforeSend: function () {
-                progressbar.show();
+                $memberModel.modal('show');
             },
             complete: function () {
-                progressbar.hide();
+                $memberModel.modal('hide');
             },
             success: function (data) {
                 $movieSection.html(data);
             },
             error: function (error) {
-                progressbar.hide();
+                $memberModel.modal('hide');
             }
         });
     };
 
-
-    //$(function () {
-    //    var progressbar = $("#progressbar"),
-    //      progressLabel = $(".progress-label");
-
-    //    progressbar.progressbar({
-    //        value: false,
-    //        change: function () {
-    //            progressLabel.text(progressbar.progressbar("value") + "%");
-    //        },
-    //        complete: function () {
-    //            progressLabel.text("Complete!");
-    //        }
-    //    });
-
-    //    function progress() {
-    //        var val = progressbar.progressbar("value") || 0;
-
-    //        progressbar.progressbar("value", val + 2);
-
-    //        if (val < 99) {
-    //            setTimeout(progress, 80);
-    //        }
-    //    }
-
-    //    setTimeout(progress, 2000);
-    //});
-    //});
 </script>
-
-@*
-        <div class="row">
-            <div class="col-md-12">
-                <!-- content -->
-                <div id="content">
-                    <div class="app-content-body ">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading font-bold" style="height:40px;">
-                                    <span class="pull-left">Star Wars: Episode IV - A New Hope</span>
-                                    <span class="pull-right text">
-                                        <i class="fa fa-thumbs-up text-success"></i> 26,000 Votes
-                                    </span>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-2" style="padding-left:0px;">
-                                        <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                                            <li class="list-group-item clearfix b-l-3x b-l-info">
-                                                <img alt="Force 2" width="162" height="180"
-                                                     srcset='@Html.Raw("http://ia.media-imdb.com/images/M/MV5BOTIyMDY2NGQtOGJjNi00OTk4LWFhMDgtYmE3M2NiYzM0YTVmXkEyXkFqcGdeQXVyNTU1NTcwOTk@._V1_SX300.jpg")'
-                                                     aria-hidden="false">
-                                            </li>
-                                        </ul>
-                                        <div class="pull-left"><span class="label bg-light m-l-sm ">121 Min</span></div>
-
-                                        <div class="pull-right" style="padding-right:10px;">
-                                            <span class="text">
-                                                <i class="fa fa-fw m-r-xs text-info fa-star m-l"></i> 8.3
-                                            </span>
-                                        </div>
-
-                                </div>
-    <div class="col-md-10">
-        <div>
-            <button class="pull-left btn btn-sm m-b-xs w-xs btn-primary">US</button>
-            <button class="pull-left btn btn-sm m-b-xs w-xs btn-info" style="margin-left:10px;">English</button>
-            <button class="pull-left btn btn-sm m-b-xs w-xs btn-default" style="margin-left:10px;">1977</button>
-            <div class="pull-right pull-right text-sm text-muted"><span class="hidden-xs ">25 May 1977</span></div>
-        </div>
-        <div class="line line-lg pull-in"></div>
-        <div>
-            <span>Story Line:</span> Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a wookiee and two droids to save the galaxy from the Empire's world-destroying battle-station, while also attempting to rescue Princess Leia from the evil Darth Vader.
-        </div>
-        <div>
-            <span>Awards:</span> Won 6 Oscars. Another 48 wins & 28 nominations.
-        </div>
-        <div class="line line-dashed b-b line-lg pull-in"></div>
-        <div style="margin-bottom:5px;">
-            <i class="fa icon-user text-success"></i><span style="margin-left:5px">Star Cast:</span> Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing
-        </div>
-        <div style="margin-bottom:5px;">
-            <span class="text">
-                <i class="fa icon-volume-1 text-success"></i><span style="margin-left:5px">
-                    Director:
-                </span>George Lucas
-            </span>
-        </div>
-        <div>
-            <span class="text">
-                <i class="fa icon-pencil text-success"></i><span style="margin-left:5px">
-                    Writer:
-                </span>George Lucas
-            </span>
-        </div>
-    </div>
-                            </div>
-    <div class="panel-footer" style="height:50px;">
-        <div class="pull-left"><button class="btn btn-default btn-sm btn-addon"><i class="fa fa-dollar"></i>123.00</button></div>
-        <button style="margin-left:10px" class="pull-right btn btn-sm m-b-xs w-xs btn-success">PG</button>
-        <button class="pull-right text-center btn btn-rounded btn-sm btn btn-default">86</button>
-
-    </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    $(document).ready(function () {
-            var btnRefresh = $('#btnRefresh');
-            $("#lstMovies").load("@Html.Raw(Url.Action("SearchMovie", "Movies")) ");
-
-            btnRefresh.click(function (e) {
-            $("#lstMovies").load("@Html.Raw(Url.Action("SearchMovie", "Movies")) ");
-            });
-            });*@
-
-@**
-    <div class="col-md-12">
-                  <!-- content -->
-                  <div id="content">
-                      <div class="app-content-body ">
-                          <div class="col-md-4" style="padding-left:0px;">
-                              <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                                  <li class="list-group-item clearfix b-l-3x b-l-info">
-                                      <div class="pull-left"><span class="label bg-light m-l-sm ">@Movie.RunTime</span></div>
-                                      <div class="pull-right pull-right text-sm text-muted"><span class="hidden-xs ">@Movie.ReleasedDate.ToString()</span></div>
-                                      <img alt="Force 2" width="150" height="175" style="padding:15px;"
-                                           srcset="@Html.Raw(Movie.Poster)"
-                                           aria-hidden="false">
-                                      <div class="clear text-center">
-                                          <a class="text-md " href="#">@Movie.Title</a><span class="label bg-light m-l-sm ">@Movie.Year</span>
-                                      </div>
-                                      <div class="line line-dashed b-b line-lg pull-in"></div>
-                                      <div class="clear text-center">
-                                          <div class="pull-right"><button class="btn btn-default btn-sm btn-addon"><i class="fa fa-dollar"></i>@Movie.Price</button></div>
-
-                                          <div class="pull-left">
-                                              <div class="pull-left">
-                                                  <button class="btn btn-success" ui-toggle-class="show inline" target="#spin">
-                                                      <span class="text">@Movie.Rated</span>
-                                                  </button>
-                                              </div>
-                                              <div class="pull-left">
-                                                  <span class="text">
-                                                      <i class="fa fa-fw m-r-xs text-info fa-star m-l"></i> @Movie.Rating
-                                                  </span>
-                                              </div>
-                                          </div>
-
-
-
-                                      </div>
-
-                                  </li>
-                              </ul>
-                          </div>
-                          <div class="col-md-8">
-                              <div class="panel panel-default">
-                                  <div class="panel-heading font-bold" style="height:40px;">
-                                      <span class="pull-left">@Movie.Title</span>
-                                      <span class="pull-right text">
-                                          <i class="fa fa-thumbs-up text-success"></i> @Movie.Votes Votes
-                                      </span>
-                                  </div>
-                                  <div class="panel-body">
-                                      <div>
-                                          <span>Star Cast:</span> @Movie.Actors
-                                      </div>
-                                      <div class="line line-dashed b-b line-lg pull-in"></div>
-                                      <div>
-                                          <span>Story Line:</span> @Movie.Plot
-                                      </div>
-                                      <div>
-                                          <span>Awards:</span> @Movie.Awards
-                                      </div>
-                                      <div>
-                                          <span class="text">
-                                              <i class="fa icon-volume-1 text-success"></i>Director:@Movie.Director
-                                          </span>
-                                      </div>
-                                      <div>
-                                          <span class="text">
-                                              <i class="fa icon-pencil text-success"></i>Writer:@Movie.Writer
-                                          </span>
-                                      </div>
-                                  </div>
-                                  <div class="panel-footer" style="height:50px;">
-
-                                      <button class="pull-left btn btn-sm m-b-xs w-xs btn-danger">@Movie.Country</button>
-                                      <button class="pull-left btn btn-sm m-b-xs w-xs btn-default">@Movie.Language</button>
-                                      <button class="pull-right  btn btn-rounded btn-sm btn btn-default">@Movie.Metascore</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-*@
-

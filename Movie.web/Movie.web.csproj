@@ -186,6 +186,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AttributeConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\GlobalExceptionHandlerAttribute.cs" />
@@ -218,6 +219,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font.css" />
     <Content Include="Content\images\Graphicloads-100-Flat-Movie.ico" />
+    <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\libs\assets\animate.css\animate.css" />
     <Content Include="Content\libs\assets\bootstrap-rtl\dist\css\bootstrap-rtl.min.css" />
@@ -345,18 +347,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Movies\Search.cshtml" />
     <Content Include="Views\Movies\MoviesView.cshtml" />
     <Content Include="Views\Error\ErrorOccurred.cshtml" />
